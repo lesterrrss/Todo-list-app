@@ -250,9 +250,10 @@ main {
     #new-task-submit {
         width: 100%;
     }
-
+    body {
+        padding: 15px ;
+    }
     main {
-        margin: 0 15px 15px 15px;
         border-radius: 20px;
     }
 
