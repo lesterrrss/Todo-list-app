@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    font-family: serif;
+}
+
+canvas#myCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111a22;
+    z-index: -1;
+}
+
+header {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: White;
+    margin-bottom: 1rem;
+}
+
+#new-task-form {
+    display: flex;
+}
+
+input,
+button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#new-task-input {
+    flex: 1 1 0%;
+    background-color: #535050;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    color: #ffffff;
+    font-size: 1.25rem;
+}
+
+#new-task-input::placeholder {
+    color: #8e8c8c;
+}
+
+#new-task-submit {
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #ff6600, #ff3399, #ff99ff, #cc00ff, #ff3300);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.4s;
+    animation: textAnimation 2s infinite linear;
+}
+
+@keyframes textAnimation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+#new-task-submit:hover {
+    opacity: 0.8;
+}
+
+#new-task-submit:active {
+    opacity: 0.6;
+    background-size: 300% auto;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+main {
+    flex: 1 1 0%;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(1, 105, 31);
+    border-radius: 50px;
+    outline: 10px solid transparent;
+    background-image: linear-gradient(to right, #097610, #18bb23, #097610);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    animation-name: backgroundAnimation;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    background: linear-gradient(to right, #FFC700, #FF0099, #CB00FF, #00FFE0, #00FF4F);
+    background-size: 500% 100%;
+}
+
+.task-list {
+    padding: 2rem;
+}
+
+.task-list h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+    margin-bottom: 1rem;
+}
+
+#tasks .task {
+    display: flex;
+    justify-content: space-between;
+    background-color: #242424;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+#tasks .task .content .text {
+    color: rgb(255, 255, 255);
+    font-size: 1.125rem;
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+}
+
+#tasks .text .content .text:not(:read-only) {
+    color: #069d10;
+}
+
+#tasks .task .actions {
+    display: flex;
+    margin: 0 -0.5rem;
+}
+
+#tasks .actions button {
+    cursor: pointer;
+    margin: 0 0.05rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.04s;
+}
+
+.task .actions button:hover {
+    opacity: 0.8s;
+}
+
+.task .actions button:active {
+    opacity: 0.6s;
+}
+
+.task .actions .edit {
+    background-image: linear-gradient(to right, #00ff11, #069d10, #00ff11);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.task .actions .delete {
+    background-image: linear-gradient(to right, #ff0000, #d31313, #ff0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.task.deleted {
+    animation-name: slideOut;
+    animation-duration: 0.9s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.task {
+    animation: slideIn 0.9s forwards;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #new-task-form {
+        flex-direction: column;
+    }
+
+    #new-task-input {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    #new-task-submit {
+        width: 100%;
+    }
+
+    main {
+        border-radius: 20px;
+    }
+
+    .task-list {
+        padding: 1rem;
+    }
+
+    .task-list h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #tasks .task {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.75rem;
+    }
+
+    #tasks .task .actions {
+        margin-top: 0.5rem;
+    }
+
+    #tasks .actions button {
+        font-size: 1rem;
+    }
+}
+
+#tasks .task .content .text.completed {
+    text-decoration: line-through;
+    color: black;
+}
