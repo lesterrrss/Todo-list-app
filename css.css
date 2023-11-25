@@ -251,7 +251,9 @@ main {
         width: 100%;
     }
     body {
-        padding: 15px ;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 50px;
     }
     main {
         border-radius: 20px;
