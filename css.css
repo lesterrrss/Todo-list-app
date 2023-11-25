@@ -250,8 +250,17 @@ main {
     #new-task-submit {
         width: 100%;
     }
+    canvas#myCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #111a22;
+        z-index: -1;
+    }
     body {
-        padding: 30px;
+        padding: 20px;
         
     }
     main {
